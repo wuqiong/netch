@@ -1,0 +1,32 @@
+{
+  "type": "ProcessMode",
+  "remark": {
+    "zh-CN": "个人微信",
+    "en": "WeChat"
+  },
+  "handle": [
+    "CrashReporter\\.exe",
+    "TxBugReport\\.exe",
+    "WeChat\\.exe",
+    "WeChatApp\\.exe",
+    "WechatAppLauncher\\.exe",
+    "WeChatDecoder\\.exe",
+    "WeChatExt\\.exe",
+    "WeChatSpt\\.exe",
+    "WeChatUpdate\\.exe",
+    "WeChatWeb\\.exe",
+    "xwalk_service\\.exe"
+  ],
+  "bypass": [],
+  "filterIntranet": false,
+  "filterLoopback": false,
+  "dnsHost": "1.1.1.1:53",
+  "handleOnlyDNS": null,
+  "icmpDelay": 10,
+  "filterParent": null,
+  "filterDNS": null,
+  "filterUDP": true,
+  "filterTCP": null,
+  "filterICMP": null,
+  "dnsProxy": null
+}

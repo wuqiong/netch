@@ -64,6 +64,12 @@ public class Socks5Util : IServerUtil
         if (dict.ContainsKey("pass") && !string.IsNullOrWhiteSpace(dict["pass"]))
             data.Password = dict["pass"];
 
+        if (dict.ContainsKey("group") && !string.IsNullOrWhiteSpace(dict["group"]))
+            data.Group = dict["group"];
+
+        if (dict.ContainsKey("remark") && !string.IsNullOrWhiteSpace(dict["remark"]))
+            data.Remark = dict["remark"];
+
         return new[] { data };
     }
 

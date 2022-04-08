@@ -32,6 +32,14 @@ public static class ModeHelper
         throw new NotSupportedException();
     }
 
+
+    public static Mode LoadModeProcessWechat()
+    {
+        string wechatModeText = System.Text.Encoding.UTF8.GetString(Netch.Properties.Resources.ProcessModeWechat);
+        Mode mode = JsonSerializer.Deserialize<Mode>(wechatModeText, JsonSerializerOptions) ?? throw new ArgumentNullException();
+        return mode;
+    }
+
     private static Mode LoadJsonMode(string file)
     {
         using var fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true);

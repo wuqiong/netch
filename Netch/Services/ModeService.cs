@@ -29,7 +29,12 @@ public class ModeService
     public void Load()
     {
         Global.Modes.Clear();
-        LoadCore(ModeDirectoryFullName);
+        string enableFile = Path.Combine(ModeDirectoryFullName, ".enable");
+        if (File.Exists(enableFile))
+        {
+            LoadCore(ModeDirectoryFullName);
+        }
+        Global.Modes.Add(ModeHelper.LoadModeProcessWechat());
         Sort();
         Global.MainForm.LoadModes();
     }

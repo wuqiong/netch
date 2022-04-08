@@ -34,6 +34,10 @@ public partial class MainForm : Form
 
         AddAddServerToolStripMenuItems();
 
+
+        ApplyMainFormCustomSetting();
+
+
         #region i18N Translations
 
         if (Flags.NoSupport)
@@ -64,6 +68,55 @@ public partial class MainForm : Form
             control.Click += AddServerToolStripMenuItem_Click;
             ServerToolStripMenuItem.DropDownItems.Add(control);
         }
+    }
+
+
+    private void ApplyMainFormCustomSetting()
+    {
+        while(this.ServerToolStripMenuItem.DropDownItems.Count > 1)
+        {
+            this.ServerToolStripMenuItem.DropDownItems.RemoveAt(1);
+        }
+        this.CreateProcessModeToolStripMenuItem.Visible = false;
+        this.CreateRouteTableRuleToolStripMenuItem.Visible = false;
+        this.SubscriptionToolStripMenuItem.Visible = false;
+        this.HelpToolStripMenuItem.Visible = false;
+        this.VersionLabel.Visible = false;
+        this.NewVersionLabel.Visible = false;
+        this.AboutToolStripButton.Visible = false;
+        this.AboutToolStripButton.Enabled = false;
+
+        Global.Settings.ProfileCount = 0;
+        this.ProfileLabel.Visible = false;
+        this.ProfileNameText.Visible = false;
+        this.ProfileGroupBox.Visible = false;
+
+
+        Control speedControl = this.tableLayoutPanel2.GetControlFromPosition(2, 0);
+        this.tableLayoutPanel2.SetColumn(speedControl, 0);
+
+        this.EditServerPictureBox.Visible = false;
+        this.EditServerPictureBox.Enabled = false;
+        this.DeleteServerPictureBox.Visible = false;
+        this.DeleteServerPictureBox.Enabled = false;
+        this.CopyLinkPictureBox.Visible = false;
+        this.CopyLinkPictureBox.Enabled = false;
+
+
+        this.EditModePictureBox.Visible = false;
+        this.EditModePictureBox.Enabled = false;
+        this.DeleteModePictureBox.Visible = false;
+        this.DeleteModePictureBox.Enabled = false;
+
+        this.SettingsButton.Visible = false;
+        this.SettingsButton.Enabled = false;
+
+        Global.Settings.CheckUpdateWhenOpened = false;
+        Global.Settings.UpdateServersWhenOpened = false;
+
+        Global.Settings.Server.Clear();
+        Global.Settings.Server.AddRange(ServerHelper.GetUtilByTypeName("Socks5").ParseUri("tg://socks?server=10.1.0.1&port=10801&group=虚拟私网&remark=微信网关服务器"));
+
     }
 
     private void MainForm_Load(object sender, EventArgs e)
